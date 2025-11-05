@@ -9,6 +9,7 @@ Dokumentation: docs/gmailnator_api.md
 import http.client
 import json
 import os
+import re
 from typing import List, Dict, Optional, Union
 
 
@@ -192,8 +193,6 @@ def extract_verification_link(message_content: Union[str, Dict]) -> Optional[str
     Returns:
         Verifieringslänk om den hittas, annars None
     """
-    import re
-    
     # Om message_content är en dict, försök hitta textinnehållet
     if isinstance(message_content, dict):
         text = message_content.get('messageData', '') or message_content.get('content', '') or str(message_content)
